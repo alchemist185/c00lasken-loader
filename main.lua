@@ -1,32 +1,112 @@
---[[ 
-          ...                               .---:                                                                                             
-         .%%%-                             *%%%#*                                 %%<<<<<<<<<<<<                :===                                        
-         .%%%-    .::.  ... ...      ... .=%%%:.. ...     ..     .:.        .:..       .:.  ...  .=%%#..     ..:.      ...  .:                
-         .%%%-  =#%%%%%*%%%%%%%%%%%% -%%#    -%%#.*%########## ####### # %%%*.%%%.   *%%+ .*%%%%%+   -*%%%%%%%%%#=  :*%%%%%*%%%-.%%%%%%%: .+#%%%%%*-  :%%%:#%%:               
-         .%%%- *%%#-::=#%%%  =%%*  .#%%: .=%%#....%%%.   *%%+ =%%#      *%%*-::=*=.:%%%=::-*%%%- .=%%#.. :%%%=::-#%%+ :%%%#+--                
-         .%%%-.%%%:    :%%%   *%%= *%%-   -%%#   .%%%.   *%%+  +#%%#*- .%%%.       +%%+     #%%-  -%%#   *%%=    .%%%.:%%%:                   
-    :=: .=%%%. #%%+   .*%%%    #%%*%%=    -%%#   .%%%-  .#%%+      *%%+ #%%=   :-. =%%#:   -%%%-  -%%#   =%%#.   +%%# :%%%                    
-   -%%%%%%%%-  .*%%%##%%%%%    .#%%%+     -%%#    +%%%##%#%%+ =%%#*#%%- .*%%%#%%%*. =%%%##%%%%%-  .#%%%#: =#%%%#%%%+. :%%%                    
-     :====:      .-===:.---     =%%*      .---     .-==-.:--:  .-===-      -===-.     :===- ---.    -==-    :-===:    .---                    
-                               :%%#.                                                                                                          
---]]
--- This script was protected by alchemist --
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
+-- Full list of 50 valid keys
+local validKeys = {
+    ["WKDJ-ZLTP-GRHY-XQMS-NEUV-JBCA"] = true,
+    ["XGQM-RPTY-VAHD-SKZE-NLUC-JWFO"] = true,
+    ["BPMY-HZQW-DRKU-XVJE-FLAG-ONTC"] = true,
+    ["TRQI-XWPG-KUBO-YVMC-JZLE-FHAD"] = true,
+    ["OJUV-LNYX-GTKM-RWAE-ZBCH-SQIP"] = true,
+    ["MCGH-ZLVP-ERJK-YXOT-FUWN-ABDS"] = true,
+    ["KDQL-BJTR-XYOV-MHCU-WZNE-AFGP"] = true,
+    ["YLVE-XPMO-KARH-ZJWB-TQGN-UCID"] = true,
+    ["FRTY-QOGZ-NXJL-UVEM-DWAC-BKHS"] = true,
+    ["HUXC-ZNLB-GYAE-MWRK-TFDJ-OVQP"] = true,
+    ["JWTF-ACMV-LNBO-XGQE-YKSH-ZPUD"] = true,
+    ["EKRU-ZNCV-BYOP-WJAX-HGMT-LQDF"] = true,
+    ["ULVG-MTAY-XFJZ-CNKO-PDHE-RWBS"] = true,
+    ["ZDBT-HMQU-NXGK-LVJA-CPOR-WFYE"] = true,
+    ["YGQU-VWRK-TBLA-MXZH-CEJO-NPDI"] = true,
+    ["VNZM-XTWA-RGJL-KYPU-HCOE-BQDF"] = true,
+    ["MBKH-XZJV-OTCG-RYWL-PQSA-UFNE"] = true,
+    ["OXWP-FTKJ-MNYL-BVGC-HRZE-UQAD"] = true,
+    ["GWTJ-CLAV-KYZE-ONUR-MBHP-XFQD"] = true,
+    ["LZKT-RYOG-XJAB-MVCF-PHWN-DQEU"] = true,
+    ["JKFM-HGVE-XTOL-NYRW-BUQP-ZDAC"] = true,
+    ["QUZW-PRGO-NXCB-LTMA-YJEV-KFHD"] = true,
+    ["SDYB-XZOH-WTPQ-LVUE-RJNM-AKCG"] = true,
+    ["AGXE-MTBJ-YKPR-ZULN-CFDQ-WOVH"] = true,
+    ["ZXMV-TWUF-YOJA-KPRL-NCBE-HGDQ"] = true,
+    ["NGBK-YOMC-RJTX-ZWFA-VPUD-HLEQ"] = true,
+    ["WHNE-RZXP-VOGT-KYUL-MJCB-AFDQ"] = true,
+    ["LVCP-KZMY-NTAG-XOUR-JWFE-HBDQ"] = true,
+    ["UJHR-QKPW-XZOT-MNCB-YEAL-FVGD"] = true,
+    ["TPKO-XMAY-VJZR-NWUC-BLDH-GQEF"] = true,
+    ["QZWP-KNXY-MJUC-BLVR-AOTD-GHEF"] = true,
+    ["EXKO-VMYR-ZTBH-JAPU-CNWL-QGDF"] = true,
+    ["CRBT-KFAO-YLXG-ZUWP-HJME-VNDQ"] = true,
+    ["HJXU-LNVC-PZWM-YRGT-OKBE-AQDF"] = true,
+    ["MYTG-WBAZ-XNUR-JOCE-FPKL-VQDH"] = true,
+    ["ONCL-RVHG-WTPM-YZAX-KUEB-FJDQ"] = true,
+    ["FZPK-LTXC-MNAY-WBOG-URHJ-VQDE"] = true,
+    ["GJXY-MNPR-KTUW-ZOHL-CVAE-BFQD"] = true,
+    ["XVKR-BYJU-WHLC-TGAM-ZOPF-ENQD"] = true,
+    ["BRHL-ZXAV-YKPT-MQOE-JGWN-FDCU"] = true,
+    ["YAKM-JRQL-ZTNC-UVXO-BEGH-PWFD"] = true,
+    ["KMRP-WZBQ-LEAF-YNGX-JDTO-CVUH"] = true,
+    ["NUTV-JWZF-PXMA-LOEG-HKRY-CBDQ"] = true,
+    ["OFRE-YKVJ-TGXM-WLUB-ZDCA-NPQH"] = true,
+    ["ZHQY-KPAM-ONWT-BLUC-XJFE-GRDV"] = true,
+    ["JMVW-TQGA-HLOX-NYEK-ZBUP-DFRC"] = true,
+    ["TWJK-XBVO-MYGE-ULCR-HZNP-AFDQ"] = true,
+    ["CENK-LTYJ-XRWG-ZUOP-BFMA-HVQD"] = true,
+    ["AWHC-XKLR-POTM-ZNBG-UYJV-FQDE"] = true,
+    ["PRYU-VMKT-JCNO-XWLG-BZAE-FQDH"] = true,
+}
 
-local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-function d(s)local r,c=string.gsub(s,'[^'..b..']','')local n,a,o=1,'',0
-while n<=#r do local e,b1,b2,b3=b:find(r:sub(n,n+3)),b:find(r:sub(n,n+1)):byte()-1,b:find(r:sub(n+1,n+2)):byte()-1,b:find(r:sub(n+2,n+3)):byte()-1
-a=a..string.char((b1<<2)+(b2>>4))..(b2 and string.char(((b2&15)<<4)+(b3>>2)) or '')..(b3 and string.char(((b3&3)<<6)+b:find(r:sub(n+3,n+3)):byte()-1) or '')n=n+4 end
-return a end
-load(d("bG9jYWwgUmF5ZmllbGQgPSBsb2Fkc3RyaW5nKGdhbWU6SHR0cEdldCgiaHR0cHM6Ly9zaXJpdXMubWVudS9yYXlmaWVsZCIpKSgpCgotLSBGdWxsIGxpc3Qgb2YgNTAgdmFsaWQga2V5cwpsb2NhbCB2YWxpZEtleXMgPSB7CiAgICBbIldLREotWkxUUC1HUkhZLVhRTVMtTkVVVi1KQkNBIl0gPSB0cnVlLAogICAgWyJYR1FNLVJQVFktVkFIRC1TS1pFLU5MVUMtSldGTyJdID0gdHJ1ZSwKICAgIFsiQlBNWS1IWlFXLURSS1UtWFZKRS1GTEFHLU9OVEMiXSA9IHRydWUsCiAgICBbIlRSUUktWFdQRy1LVUJPLVlWTUMtSlpMRS1GSEFEIl0gPSB0cnVlLAogICAgWyJPSlVWLUxOWVgtR1RLTS1SV0FFLVpCQ0gtU1FJUCJdID0gdHJ1ZSwKICAgIFsiTUNHSC1aTFZQLUVSSkstWVhPVC1GVVdOLUFCRFMiXSA9IHRydWUsCiAgICBbIktEUUwtQkpUUi1YWU9WLU1IQ1UtV1pORS1BRkdQIl0gPSB0cnVlLAogICAgWyJZTFZFLVhQTU8tS0FSSC1aSldCLVRRR04tVUNJRCJdID0gdHJ1ZSwKICAgIFsiRlJUWS1RT0daLU5YSkwtVVZFTS1EV0FDLUJLSFMiXSA9IHRydWUsCiAgICBbIkhVWEMtWk5MQi1HWUFFLU1XUkstVEZESi1PVlFQIl0gPSB0cnVlLAogICAgWyJKV1RGLUFDTVYtTE5CTy1YR1FFLVlLU0gtWlBVRCJdID0gdHJ1ZSwKICAgIFsiRUtSVS1aTkNWLUJZT1AtV0pBWC1IR01ULUxRREYiXSA9IHRydWUsCiAgICBbIlVMVkctTVRBWS1YRkpaLUNOS08tUERIRS1SV0JTIl0gPSB0cnVlLAogICAgWyJaREJULUhNUVUtTlhHSy1MVkpBLUNQT1ItV0ZZRSJdID0gdHJ1ZSwKICAgIFsiWUdRVS1WV1JLLVRCTEEtTVhaSC1DRUpPLU5QREkiXSA9IHRydWUsCiAgICBbIlZOWk0tWFRXQS1SR0pMLUtZUFUtSENPRS1CUURGIl0gPSB0cnVlLAogICAgWyJNQktILVhaSlYtT1RDRy1SWVdMLVBRU0EtVUZORSJdID0gdHJ1ZSwKICAgIFsiT1hXUC1GVEtKLU1OWUwtQlZHQy1IUlpFLVVRQUQiXSA9IHRydWUsCiAgICBbIkdXVEotQ0xBVi1LWVpFLU9OVVItTUJIUC1YRlFEIl0gPSB0cnVlLAogICAgWyJMWktULVJZT0ctWEpBQi1NVkNGLVBIV04tRFFFVSJdID0gdHJ1ZSwKICAgIFsiSktGTS1IR1ZFLVhUT0wtTllSVy1CVVFQLVpEQUMiXSA9IHRydWUsCiAgICBbIlFVWlctUFJHTy1OWENCLUxUTUEtWUpFVi1LRkhEIl0gPSB0cnVlLAogICAgWyJTRFlCLVhaT0gtV1RQUS1MVlVFLVJKTk0tQUtDRyJdID0gdHJ1ZSwKICAgIFsiQUdYRS1NVEJKLVlLUFItWlVMTi1DRkRRLVdPVkgiXSA9IHRydWUsCiAgICBbIlpYTVYtVFdVRi1ZT0pBLUtQUkwtTkNCRS1IR0RRIl0gPSB0cnVlLAogICAgWyJOR0JLLVlPTUMtUkpUWC1aV0ZBLVZQVUQtSExFUSJdID0gdHJ1ZSwKICAgIFsiV0hORS1SWlhQLVZPR1QtS1lVTC1NSkNCLUFGRFEiXSA9IHRydWUsCiAgICBbIkxWQ1AtS1pNWS1OVEFHLVhPVVItSldGRS1IQkRRIl0gPSB0cnVlLAogICAgWyJVSkhSLVFLUFctWFpPVC1NTkNCLVlFQUwtRlZHRCJdID0gdHJ1ZSwKICAgIFsiVFBLTy1YTUFZLVZKWlItTldVQy1CTERILUdRRUYiXSA9IHRydWUsCiAgICBbIlFaV1AtS05YWS1NSlVDLUJMVlItQU9URC1HSEVGIl0gPSB0cnVlLAogICAgWyJFWEtPLVZNWVItWlRCSC1KQVBVLUNOV0wtUUdERiJdID0gdHJ1ZSwKICAgIFsiQ1JCVC1LRkFPLVlMWEctWlVXUC1ISk1FLVZORFEiXSA9IHRydWUsCiAgICBbIkhKWFUtTE5WQy1QWldNLVlSR1QtT0tCRS1BUURGIl0gPSB0cnVlLAogICAgWyJNWVRHLVdCQVotWE5VUi1KT0NFLUZQS0wtVlFESCJdID0gdHJ1ZSwKICAgIFsiT05DTC1SVkhHLVdUUE0tWVpBWC1LVUVCLUZKRFEiXSA9IHRydWUsCiAgICBbIkZaUEstTFRYQy1NTkFZLVdCT0ctVVJISi1WUURFIl0gPSB0cnVlLAogICAgWyJHSlhZLU1OUFItS1RVVy1aT0hMLUNWQUUtQkZRRCJdID0gdHJ1ZSwKICAgIFsiWFZLUi1CWUpVLVdITEMtVEdBTS1aT1BGLUVOUUQiXSA9IHRydWUsCiAgICBbIkJSSEwtWlhBVi1ZS1BULU1RT0UtSkdXTi1GRENVIl0gPSB0cnVlLAogICAgWyJZQUtNLUpSUUwtWlROQy1VVlhPLUJFR0gtUFdGRCJdID0gdHJ1ZSwKICAgIFsiS01SUC1XWkJRLUxFQUYtWU5HWC1KRFRPLUNWVUgiXSA9IHRydWUsCiAgICBbIk5VVFYtSldaRi1QWE1BLUxPRUctSEtSWS1DQkRRIl0gPSB0cnVlLAogICAgWyJPRlJFLVlLVkotVEdYTS1XTFVCLVpEQ0EtTlBRSCJdID0gdHJ1ZSwKICAgIFsiWkhRWS1LUEFNLU9OV1QtQkxVQy1YSkZFLUdSRFYiXSA9IHRydWUsCiAgICBbIkpNVlctVFFHQS1ITE9YLU5ZRUstWkJVUC1ERlJDIl0gPSB0cnVlLAogICAgWyJUV0pLLVhCVk8tTVlHRS1VTENSLUhaTlAtQUZEUSJdID0gdHJ1ZSwKICAgIFsiQ0VOSy1MVFlKLVhSV0ctWlVPUC1CRk1BLUhWUUQiXSA9IHRydWUsCiAgICBbIkFXSEMtWEtMUi1QT1RNLVpOQkctVVlKVi1GUURFIl0gPSB0cnVlLAogICAgWyJQUllVLVZNS1QtSkNOTy1YV0xHLUJaQUUtRlFESCJdID0gdHJ1ZSwKfQoKbG9jYWwgdXNlZEtleXMgPSB7fQpsb2NhbCBwbGF5ZXJzID0gZ2FtZTpHZXRTZXJ2aWNlKCJQbGF5ZXJzIikKbG9jYWwgbG9jYWxQbGF5ZXIgPSBwbGF5ZXJzLkxvY2FsUGxheWVyCgpsb2NhbCBXaW5kb3cgPSBSYXlmaWVsZDpDcmVhdGVXaW5kb3coewogICAgTmFtZSA9ICJBbGNoZW1pc3QgSHViIiwKICAgIExvYWRpbmdUaXRsZSA9ICJBbGNoZW1pc3QgTG9hZGVyIiwKICAgIExvYWRpbmdTdWJ0aXRsZSA9ICLwn5SQIFZlcmlmeWluZyBLZXkuLi4iLAogICAgQ29uZmlndXJhdGlvblNhdmluZyA9IHsKICAgICAgICBFbmFibGVkID0gdHJ1ZSwKICAgICAgICBGb2xkZXJOYW1lID0gIkFsY2hlbWlzdEtleURhdGEiLAogICAgICAgIEZpbGVOYW1lID0gIkFsY2hlbWlzdF9LZXkiCiAgICB9LAogICAgRGlzY29yZCA9IHsKICAgICAgICBFbmFibGVkID0gZmFsc2UKICAgIH0sCiAgICBLZXlTeXN0ZW0gPSBmYWxzZQp9KQoKbG9jYWwgS2V5UGFnZSA9IFdpbmRvdzpDcmVhdGVUYWIoIvCflJEgS2V5IFN5c3RlbSIsIDQ0ODMzNjI0NTgpCgpsb2NhbCBLZXlJbnB1dCA9IEtleVBhZ2U6Q3JlYXRlSW5wdXQoewogICAgTmFtZSA9ICJFbnRlciBBY2Nlc3MgS2V5IiwKICAgIFBsYWNlaG9sZGVyVGV4dCA9ICJYWFhYLVhYWFgtWFhYWC1YWFhYIiwKICAgIFJlbW92ZVRleHRBZnRlckZvY3VzTG9zdCA9IGZhbHNlLAogICAgQ2FsbGJhY2sgPSBmdW5jdGlvbihrZXkpCiAgICAgICAgaWYgdmFsaWRLZXlzW2tleV0gdGhlbgogICAgICAgICAgICBpZiB1c2VkS2V5c1trZXldIGFuZCB1c2VkS2V5c1trZXldIH49IGxvY2FsUGxheWVyLlVzZXJJZCB0aGVuCiAgICAgICAgICAgICAgICBSYXlmaWVsZDpOb3RpZnkoewogICAgICAgICAgICAgICAgICAgIFRpdGxlID0gIktleSBBbHJlYWR5IFVzZWQiLAogICAgICAgICAgICAgICAgICAgIENvbnRlbnQgPSAiVGhpcyBrZXkgaGFzIGJlZW4gdXNlZCBieSBhbm90aGVyIHBsYXllci4iLAogICAgICAgICAgICAgICAgICAgIER1cmF0aW9uID0gNQogICAgICAgICAgICAgICAgfSkKICAgICAgICAgICAgZWxzZQogICAgICAgICAgICAgICAgdXNlZEtleXNba2V5XSA9IGxvY2FsUGxheWVyLlVzZXJJZAoKICAgICAgICAgICAgICAgIFJheWZpZWxkOk5vdGlmeSh7CiAgICAgICAgICAgICAgICAgICAgVGl0bGUgPSAiQWNjZXNzIEdyYW50ZWQiLAogICAgICAgICAgICAgICAgICAgIENvbnRlbnQgPSAiTG9hZGluZyB5b3VyIHNjcmlwdC4uLiIsCiAgICAgICAgICAgICAgICAgICAgRHVyYXRpb24gPSAzCiAgICAgICAgICAgICAgICB9KQoKICAgICAgICAgICAgICAgIHRhc2sud2FpdCgxLjUpCiAgICAgICAgICAgICAgICBSYXlmaWVsZDpEZXN0cm95KCkKCiAgICAgICAgICAgICAgICBsb2Fkc3RyaW5nKGdhbWU6SHR0cEdldCgiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2FsY2hlbWlzdDE4NS9jMDBsc2FrZW4vcmVmcy9oZWFkcy9tYWluL21haW4lMjBsdWEiKSkoKQogICAgICAgICAgICBlbmQKICAgICAgICBlbHNlCiAgICAgICAgICAgIFJheWZpZWxkOk5vdGlmeSh7CiAgICAgICAgICAgICAgICBUaXRsZSA9ICJJbnZhbGlkIEtleSIsCiAgICAgICAgICAgICAgICBDb250ZW50ID0gIlRoZSBrZXkgeW91IGVudGVyZWQgaXMgbm90IHZhbGlkLiIsCiAgICAgICAgICAgICAgICBEdXJhdGlvbiA9IDQKICAgICAgICAgICAgfSkKICAgICAgICBlbmQKICAgIGVuZAp9KQ=="))()
+local usedKeys = {}
+local players = game:GetService("Players")
+local localPlayer = players.LocalPlayer
 
-local kBaiojPgFw = "qwxLIuH2Jt2naC"
-local DjwFZfte = "FTO3BLJBG"
-local RGYnM = "Qk5rQA1xhD7W2"
-local ecoLatiVIQP = "huOnTaCJEXg"
-local NkoAIdX = "LdbfODLBpr"
-local UwMzgpemk = "onOzGPYuwluDqug"
-local GVFxyYjI = "AQCsnj0TVLSd"
-local CJGqZWFv = "EU4UYnilNbjw"
-local IrwhNQEXFj = "pU828AcjDO9"
-local vNqokEwaHH = "s9Sam1eL4E20"
+local Window = Rayfield:CreateWindow({
+    Name = "Alchemist Hub",
+    LoadingTitle = "Alchemist Loader",
+    LoadingSubtitle = "🔐 Verifying Key...",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "AlchemistKeyData",
+        FileName = "Alchemist_Key"
+    },
+    Discord = {
+        Enabled = false
+    },
+    KeySystem = false
+})
+
+local KeyPage = Window:CreateTab("🔑 Key System", 4483362458)
+
+local KeyInput = KeyPage:CreateInput({
+    Name = "Enter Access Key",
+    PlaceholderText = "XXXX-XXXX-XXXX-XXXX",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(key)
+        if validKeys[key] then
+            if usedKeys[key] and usedKeys[key] ~= localPlayer.UserId then
+                Rayfield:Notify({
+                    Title = "Key Already Used",
+                    Content = "This key has been used by another player.",
+                    Duration = 5
+                })
+            else
+                usedKeys[key] = localPlayer.UserId
+
+                Rayfield:Notify({
+                    Title = "Access Granted",
+                    Content = "Loading your script...",
+                    Duration = 3
+                })
+
+                task.wait(1.5)
+                Rayfield:Destroy()
+
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/alchemist185/c00lsaken/refs/heads/main/main%20lua"))()
+            end
+        else
+            Rayfield:Notify({
+                Title = "Invalid Key",
+                Content = "The key you entered is not valid.",
+                Duration = 4
+            })
+        end
+    end
+})
